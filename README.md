@@ -1,9 +1,9 @@
-![header](https://gitlab.com/maths1009/maths1009/-/raw/main/header.gif?ref_type=heads)
+![header](./header.gif)
 
 ```jsx
 import { useState } from "react";
 
-const useHobbies = () => {
+const useHobbies = (): string[] => {
   return [
     "Football",
     "Watching marvels",
@@ -12,12 +12,14 @@ const useHobbies = () => {
   ];
 };
 
-export const Readme = () => {
-  const [user, setUser] = useState("Brangeon Mathis");
-  const [currentWork, setCurrentWork] = useState("Writing code...");
-  const hobbies = useHobbies();
+interface ReadmeProps {}
 
-  const city = "Angers, France";
+export const Readme: React.FC<ReadmeProps> = () => {
+  const [user, setUser] = useState < string > "Brangeon Mathis";
+  const [currentWork, setCurrentWork] = useState < string > "Writing code...";
+  const hobbies: string[] = useHobbies();
+
+  const city: string = "Angers, France";
 
   return (
     <div>
@@ -26,7 +28,7 @@ export const Readme = () => {
       <h2>🌆 Location</h2>
       <p>I currently live in {city}.</p>
       <ul>
-        {hobbies.map((hobby, index) => (
+        {hobbies.map((hobby: string, index: number) => (
           /*don't forget key on map :)*/
           <li key={index}>{hobby}</li>
         ))}
